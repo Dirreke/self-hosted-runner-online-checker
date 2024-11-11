@@ -5,8 +5,9 @@ async function run() {
     try {
         const runnerLabelsStr = core.getInput('runner-labels',
             {required: true});
-        const runnerLabels = runnerLabelsStr.split(/[, ;]+/).map(
-            label => label.trim());
+        const runnerLabels = parseVector(runnerLabelsStr);
+        // const runnerLabels = runnerLabelsStr.split(/[, ;]+/).map(
+        //     label => label.trim());
         const includeOrganizationRunners = core.getInput(
             'include-organization-runners') === 'true';
 
