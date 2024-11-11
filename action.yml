@@ -4,8 +4,7 @@ inputs:
   runner-labels:
     description: 'Runner labels to use (space, comma, or semicolon separated)'
     required: false
-    default: |
-      all
+    default: '[all]'
   include-organization-runners:
     description: 'Include organization runners (Experimental)'
     required: false

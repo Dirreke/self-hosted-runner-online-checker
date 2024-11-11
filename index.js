@@ -5,7 +5,7 @@ async function run() {
     try {
         const runnerLabelsStr = core.getInput('runner-labels',
             {required: true});
-        const runnerLabels = parseVector(runnerLabelsStr);
+        const runnerLabels = JSON.parse(runnerLabelsStr);
         // const runnerLabels = runnerLabelsStr.split(/[, ;]+/).map(
         //     label => label.trim());
         const includeOrganizationRunners = core.getInput(
@@ -21,6 +21,7 @@ async function run() {
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
             });
+        core.info(`${runnerLabelsStr} `);
         core.info(
             `Repository Runner: ${JSON.stringify(response.runners, null, 2)}`);
         runners.push(...response.runners);
