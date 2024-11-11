@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 async function run() {
     try {
-        const runnerLabelsStr = core.getInput('runner-labels',
+        let runnerLabelsStr = core.getInput('runner-labels',
             {required: true});
         // const runnerLabels = JSON.parse(runnerLabelsStr);
         if (runnerLabelsStr.startsWith('[') && runnerLabelsStr.endsWith(']')) {
