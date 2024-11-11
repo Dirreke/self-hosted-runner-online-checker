@@ -5,9 +5,13 @@ async function run() {
     try {
         const runnerLabelsStr = core.getInput('runner-labels',
             {required: true});
-        const runnerLabels = JSON.parse(runnerLabelsStr);
-        // const runnerLabels = runnerLabelsStr.split(/[, ;]+/).map(
-        //     label => label.trim());
+        // const runnerLabels = JSON.parse(runnerLabelsStr);
+        if (runnerLabelsStr.startsWith('[') && runnerLabelsStr.endsWith(']')) {
+            runnerLabelsStr = runnerLabelsStr.slice(1, -1);
+        }
+
+        const runnerLabels = runnerLabelsStr.split(/[, ;]+/).map(
+            label => label.trim());
         const includeOrganizationRunners = core.getInput(
             'include-organization-runners') === 'true';
 
